@@ -10,10 +10,10 @@
 export GL_HOSTNAME=$HOSTNAME
 
 # Install from this GitLab branch
-export GL_GIT_BRANCH="5-2-stable"
+export GL_GIT_BRANCH="5-0-stable"
 
 # Define the version of ruby the environment that we are installing for
-export RUBY_VERSION="1.9.3-p392"
+export RUBY_VERSION="2.0.0-p247"
 
 # Define MySQL root password
 MYSQL_ROOT_PW=$(cat /dev/urandom | tr -cd [:alnum:] | head -c ${1:-16})
@@ -98,10 +98,10 @@ chkconfig redis on
 yum install -y mysql-server
 
 ## Turn on autostart
-chkconfig mysqld on
+chkconfig mysql on
 
 ## Start mysqld
-service mysqld start
+service mysql start
 
 ### Create the database
 echo "CREATE DATABASE IF NOT EXISTS gitlabhq_production DEFAULT CHARACTER SET 'utf8' COLLATE 'utf8_unicode_ci';" | mysql -u root
@@ -163,7 +163,7 @@ export force=yes
 su git -c "bundle exec rake gitlab:setup RAILS_ENV=production"
 
 ## Install init script
-curl --output /etc/init.d/gitlab https://raw.github.com/gitlabhq/gitlab-recipes/master/init.d/gitlab-centos
+curl --output /etc/init.d/gitlab https://raw.github.com/gitlabhq/gitlab-recipes/5-0-stable/init.d/gitlab
 chmod +x /etc/init.d/gitlab
 
 ## Fix for issue 30
@@ -181,7 +181,7 @@ service gitlab start
 # Apache
 
 ## Install
-yum -y install httpd
+#yum -y install httpd
 chkconfig httpd on
 
 ## Configure
