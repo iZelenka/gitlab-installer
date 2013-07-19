@@ -7,7 +7,7 @@
 # Submit issues here: github.com/mattias-ohlsson/gitlab-installer
 
 # Define the public hostname
-export GL_HOSTNAME=$HOSTNAME
+export GL_HOSTNAME="git.greenlightsdev.com"
 
 # Install from this GitLab branch
 export GL_GIT_BRANCH="5-0-stable"
