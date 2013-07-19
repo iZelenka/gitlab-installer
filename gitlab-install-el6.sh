@@ -95,13 +95,13 @@ service redis start
 chkconfig redis on
 
 ## Install mysql-server
-yum install -y mysql-server
+#yum install -y mysql-server
 
 ## Turn on autostart
 chkconfig mysql on
 
 ## Start mysqld
-service mysql start
+#service mysql start
 
 ### Create the database
 echo "CREATE DATABASE IF NOT EXISTS gitlabhq_production DEFAULT CHARACTER SET 'utf8' COLLATE 'utf8_unicode_ci';" | mysql -u root
